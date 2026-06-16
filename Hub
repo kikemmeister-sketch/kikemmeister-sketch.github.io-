@@ -1,0 +1,84 @@
+import Link from 'next/link';
+
+const examples = [
+  {
+    title: 'Pour les curieux',
+    text: 'Une box d’exploration, un atelier local ou un livre qui ouvre une nouvelle passion.',
+  },
+  {
+    title: 'Pour les gourmands',
+    text: 'Un cours de cuisine, un coffret dégustation ou une belle adresse à découvrir à deux.',
+  },
+  {
+    title: 'Pour les moments forts',
+    text: 'Une expérience à vivre, un souvenir personnalisé ou une surprise pensée pour l’occasion.',
+  },
+];
+
+export default function Home() {
+  return (
+    <main>
+      <section className="hero">
+        <div className="heroContent">
+          <p className="eyebrow">Assistant cadeau intelligent</p>
+          <h1>InspiCadeau</h1>
+          <p className="heroText">
+            Trouvez une idée de cadeau claire, personnalisée et adaptée à votre budget en moins
+            d’une minute.
+          </p>
+          <div className="actions">
+            <Link className="primaryButton" href="/questionnaire">
+              Trouver un cadeau
+            </Link>
+            <a className="secondaryButton" href="#idees">
+              Voir des idées
+            </a>
+          </div>
+        </div>
+
+        <div className="giftScene" aria-hidden="true">
+          <div className="giftCard mainGift">
+            <span>Anniversaire</span>
+            <strong>Atelier céramique</strong>
+            <small>45 €</small>
+          </div>
+          <div className="giftCard sideGift">
+            <span>Noël</span>
+            <strong>Coffret lecture</strong>
+            <small>32 €</small>
+          </div>
+          <div className="giftCard bottomGift">
+            <span>Merci</span>
+            <strong>Dîner surprise</strong>
+            <small>80 €</small>
+          </div>
+        </div>
+      </section>
+
+      <section className="section" id="idees">
+        <div className="sectionHeader">
+          <p className="eyebrow">Des pistes utiles</p>
+          <h2>Des suggestions qui partent de la personne, pas d’une liste au hasard.</h2>
+        </div>
+        <div className="exampleGrid">
+          {examples.map((item) => (
+            <article className="exampleCard" key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="ctaBand">
+        <div>
+          <p className="eyebrow">Prêt à essayer ?</p>
+          <h2>Répondez à quelques questions, InspiCadeau s’occupe du tri.</h2>
+        </div>
+        <Link className="primaryButton" href="/questionnaire">
+          Commencer
+        </Link>
+      </section>
+    </main>
+  );
+}
